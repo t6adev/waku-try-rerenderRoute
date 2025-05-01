@@ -20,7 +20,9 @@ export const Button = () => {
       action={() => {
         startTransition(async () => {
           const result = await serverAction();
-          setResult(result);
+          startTransition(() => {
+            setResult(result);
+          });
         });
       }}
     >
