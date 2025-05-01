@@ -6,7 +6,7 @@ import { serverAction } from '../action';
 
 export const Button = () => {
   const [isPending, startTransition] = useTransition();
-  const [result, seResult] = useState(false);
+  const [result, setResult] = useState(false);
 
   if (isPending) {
     return <div>Now pending...</div>;
@@ -20,7 +20,7 @@ export const Button = () => {
       action={() => {
         startTransition(async () => {
           const result = await serverAction();
-          seResult(result);
+          setResult(result);
         });
       }}
     >
